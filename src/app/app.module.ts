@@ -19,7 +19,7 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     ReactiveFormsModule,
     TodoModule,
-    StoreModule.forRoot({ todos: todoReducer }),
+    StoreModule.forRoot({ todoList: todoReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
       logOnly: !isDevMode(), 

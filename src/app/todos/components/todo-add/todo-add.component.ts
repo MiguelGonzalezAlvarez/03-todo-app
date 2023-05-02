@@ -11,19 +11,15 @@ import { createTodo, resetTodo } from '../../todo.actions';
   templateUrl: './todo-add.component.html',
   styleUrls: ['./todo-add.component.css']
 })
-export class TodoAddComponent implements OnInit {
-  textInput!: FormControl;
+export class TodoAddComponent {
+  textInput: FormControl;
 
-  constructor(private store: Store<AppState>) { }
-
-  ngOnInit(): void {
+  constructor(private store: Store<AppState>) {
     this.textInput = new FormControl('Hola', Validators.required);
   }
 
   addTodo(): void {
-    if (this.textInput.invalid) {
-      return;
-    }
+    if (this.textInput.invalid) { return; }
 
     this.store.dispatch(createTodo({ todoText: this.textInput.value }));
     this.textInput.reset();
