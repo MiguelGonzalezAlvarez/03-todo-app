@@ -8,7 +8,6 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 
 @NgModule({
   declarations: [
-    TodoPageComponent,
     TodoAddComponent,
     TodoFooterComponent,
     TodoItemComponent,
@@ -17,6 +16,9 @@ import { TodoListComponent } from './todo-list/todo-list.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    TodoPageComponent
   ]
 })
 export class TodoModule { }
