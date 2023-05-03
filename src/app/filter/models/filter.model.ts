@@ -1,0 +1,1 @@
+export type ValidFilters = 'All' | 'Completed' | 'Pending';

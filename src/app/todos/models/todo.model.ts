@@ -8,5 +8,4 @@ export class Todo {
         this.texto = texto;
         this.completado = false;
     }
-
 }
