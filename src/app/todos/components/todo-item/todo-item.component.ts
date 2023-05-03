@@ -1,11 +1,11 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
 import { Todo } from '../../models/todo.model';
 import { AppState } from '../../../app.reducer';
-import { toggleTodo } from '../../todo.actions';
+import { updateTodo, toggleTodo, deleteTodo } from '../../todo.actions';
 
 
 @Component({
@@ -14,29 +14,31 @@ import { toggleTodo } from '../../todo.actions';
   styleUrls: ['./todo-item.component.css']
 })
 
-export class TodoItemComponent {
+export class TodoItemComponent implements OnInit {
 
   @Input() todo!: Todo;
 
   @ViewChild('editingInput') editingInput!: ElementRef;
 
-  checkCompleted: FormControl;
-  textInput: FormControl;
+  checkCompleted!: FormControl;
+  textInput!: FormControl;
 
   editing: boolean = false;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>) { }
+
+  ngOnInit(): void {
     this.checkCompleted = new FormControl(this.todo.completado);
     this.textInput = new FormControl(this.todo.texto, Validators.required);
 
     this.checkCompleted.valueChanges.subscribe(() => {
       this.store.dispatch(toggleTodo({ todoId: this.todo.id }));
     });
-
   }
 
   startEditing(): void {
     this.editing = true;
+    this.textInput.setValue(this.todo.texto);
 
     setTimeout(() => {
       this.editingInput.nativeElement.select();
@@ -51,7 +53,11 @@ export class TodoItemComponent {
       return;
     }
 
-    this.todo.texto = this.textInput.value;
+    this.store.dispatch(updateTodo({ todoId: this.todo.id, todoText: this.textInput.value }));
+  }
+
+  deleteItem(): void {
+    this.store.dispatch(deleteTodo({ todoId: this.todo.id }));
   }
 
 }
