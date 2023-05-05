@@ -8,5 +8,5 @@ export const initialState: ValidFilters = 'All';
 
 export const filterReducer = createReducer(
     initialState as ValidFilters,
-    on(updateFilter, (_, { filter }) => filter)
+    on(updateFilter, (_, { currentFilter }) => currentFilter)
 );
