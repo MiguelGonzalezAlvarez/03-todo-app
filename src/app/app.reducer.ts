@@ -8,10 +8,10 @@ import { ValidFilters } from "./filter/models/filter.model";
 
 export interface AppState {
     todoList: Todo[];
-    filter: ValidFilters;
+    currentFilter: ValidFilters;
 }
 
 export const appReducer: ActionReducerMap<AppState> = {
     todoList: todoReducer,
-    filter: filterReducer
+    currentFilter: filterReducer
 }

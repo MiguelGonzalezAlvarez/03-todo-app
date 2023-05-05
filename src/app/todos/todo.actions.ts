@@ -5,4 +5,5 @@ export const updateTodo = createAction('[Todo Component] Update todo', props<{ t
 export const deleteTodo = createAction('[Todo Component] Delete todo', props<{ todoId: number }>());
 export const toggleTodo = createAction('[Todo Component] Toggle todo', props<{ todoId: number }>());
 export const toggleAllTodo = createAction('[Todo Component] Toggle all todo');
+export const clearCompletedTodo = createAction('[Todo Component] Clear completed todo');
 export const resetTodo = createAction('[Todo Component] Reset todo');

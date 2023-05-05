@@ -4,17 +4,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { todoReducer } from './todos/todo.reducer';
 
 import { AppComponent } from './app.component';
 import { TodoModule } from './todos/todo.module';
-import { FooterComponent } from './footer/footer.component';
 import { appReducer } from './app.reducer';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FooterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -32,4 +29,5 @@ import { appReducer } from './app.reducer';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
