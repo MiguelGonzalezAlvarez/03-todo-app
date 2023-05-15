@@ -18,13 +18,7 @@ import { appReducer } from './app.reducer';
     ReactiveFormsModule,
     TodoModule,
     StoreModule.forRoot(appReducer),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, 
-      logOnly: !isDevMode(), 
-      autoPause: true, 
-      trace: false, 
-      traceLimit: 75
-    })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode(), autoPause: true, trace: false, traceLimit: 75 })
   ],
   providers: [],
   bootstrap: [AppComponent]
